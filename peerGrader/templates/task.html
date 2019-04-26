@@ -1,0 +1,86 @@
+<!-- <!DOCTYPE html>
+<html>
+<title>Current Tasks</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+	  <div>
+    {% for question in questions %}
+      <form action="/peer/{{ question.questionID }}/{{ rollNumber }}/submit/" method="post">
+        {% csrf_token %}
+        <p> {{question.question_text}} </p>
+        <input type="text" name="{{ question.questionID }}answer">
+        <input type="submit" name="submit">
+      </form>
+    {% endfor %}
+  </div>
+</div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<title>Current Tasks</title>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+.form-inline {  
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.form-inline label {
+  margin: 5px 10px 5px 0;
+}
+
+.form-inline input {
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.form-inline button {
+  padding: 10px 20px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+  cursor: pointer;
+}
+
+.form-inline button:hover {
+  background-color: royalblue;
+}
+
+@media (max-width: 800px) {
+  .form-inline input {
+    margin: 10px 0;
+  }
+  
+  .form-inline {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+</style>
+</head>
+<body bgcolor="#EBDEF0">
+<h1><b><font color="#B03A2E">Current Tasks</font></b></h1>
+<h3><font color="#5DADE2">Fill in your Responses</font></h3>
+{% for question in questions %}
+  <form class="form-inline" action="/peer/{{ question.questionID }}/{{ rollNumber }}/submit/" method="post">
+    {% csrf_token %}
+    <label for="question">{{question.question_text}}</label>
+    <input type="text" name="{{ question.questionID }}answer" placeholder="Enter Response">
+    <button type="submit">Submit</button>
+  </form>
+{% endfor %}
+
+</body>
+</html>

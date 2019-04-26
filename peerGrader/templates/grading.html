@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<title>Grade the Following Submissions</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body bgcolor="#ECF0F1">
+  <h2><b><font color="#B03A2E">Submissions to be graded for Question number {{question_number}}</font></b></h2>
+	  <div>
+      {% for code in codes %}
+      <form action="/peer/{{ question_number }}/{{ code.uid }}/{{ rollNumber }}/grade/" method="post">
+        {% csrf_token %}
+        <p><font face="verdana" color="green">Response: </font>{{code.text}} </p>
+        <input type="integer" name="{{ code.uid }}grade">
+        <input type="submit" name="grade">
+      </form>
+
+
+    {% endfor %}
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<title>Home</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+
+.dropdown {
+  position: relative;
+  background-color: #f1f1f1;
+
+}
+
+.dropdown-content {
+  display: none;
+  position: relative;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+</style>
+<body>
+
+<div class="w3-row">
+  <div class="w3-half w3-black w3-container w3-center" style="height:100vh">
+    <div class="w3-padding-64">
+      <h1>My Profile</h1>
+    </div>
+    <div class="w3-padding-64">
+      <a href="#" class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16">Home</a>
+      <a href="http://localhost:8000/peer/{{rollNumber}}/task_student/" class="w3-button w3-black w3-block w3-hover-teal w3-padding-16">Current Tasks</a>
+
+      <a href="#contact" class="w3-button w3-black w3-block w3-hover-brown w3-padding-16">GradeCard</a>
+    <div class="dropdown">
+        <button class="w3-button w3-black w3-block w3-hover-dark-grey w3-padding-16">To Grade</button>
+        <!-- {% for a in questions %} -->
+        <div class="dropdown-content">
+          <a href="http://localhost:8000/peer/{{a.questionID}}/{{rollNumber}}/student/">Question Number - {{a.questionID}}</a>
+        </div>
+        <!-- {% endfor %} -->
+      </div>
+    </div>
+  </div>
+  <div class="w3-half w3-blue-grey w3-container" style="height:100vh">
+    <div class="w3-padding-64 w3-center">
+      <h1>About Me</h1>
+      <img src="https://oa.cc.iitk.ac.in/Oa/Jsp/Photo/{{ rollNumber }}_0.jpg" class="w3-margin w3-circle" alt="Person" style="width:50%">
+      <div class="w3-left-align w3-padding-large">
+        <p>Name : {{name}}</p>
+        <p>Roll Number : {{rollNumber}}</p>
+        <p>Programme : {{programme}}</p>
+        <p>Department : {{department}}</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
