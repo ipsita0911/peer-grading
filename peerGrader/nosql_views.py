@@ -36,7 +36,8 @@ def gradedBy (request, questionID):
         for checker in checkedBy(submission, totalSubmissions, totalCheckers):
             checkers.append(checker)
         for checker in checkers:
-            submissions[submission].checkedBy.append(submissions[checker])
+            submissions[submission].grading.checkedBy.append(submissions[checker])
+            
 
         
 
